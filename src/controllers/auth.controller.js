@@ -13,7 +13,6 @@ export const authRegisterCon = async (req, res, next) => {
         req.body.full_name = req.body.fullName;
 
         const user = new User(req.body);
-        console.log(user);
 
         await user.save();
         res.send({

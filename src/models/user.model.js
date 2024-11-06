@@ -25,6 +25,12 @@ const userSchema = new Schema(
             minLength: [10, "Password must be at least 10"],
             maxLength: [100, "Password must be at least 100"],
         },
+        bio: {
+            type: String,
+        },
+        skills: {
+            type: String,
+        },
     },
     {
         timestamps: true,

@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+
 const categorySchema = new mongoose.Schema(
     {
         title: {
@@ -7,7 +8,8 @@ const categorySchema = new mongoose.Schema(
             unique: true,
             trim: true,
         },
-        descripton: {
+        description: {
+            // Corrected the typo here
             type: String,
             trim: true,
             required: true,
