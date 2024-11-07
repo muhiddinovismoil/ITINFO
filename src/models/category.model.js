@@ -9,7 +9,6 @@ const categorySchema = new mongoose.Schema(
             trim: true,
         },
         description: {
-            // Corrected the typo here
             type: String,
             trim: true,
             required: true,

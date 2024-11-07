@@ -1,5 +1,5 @@
 import { User } from "../models/index.js";
-
+import { createTokens } from "../helpers/jwt.js";
 export const authRegisterCon = async (req, res, next) => {
     try {
         const { email, password } = req.body;
@@ -31,19 +31,22 @@ export const authLoginCon = async (req, res, next) => {
             full_name: 1,
             email: 1,
             password: 1,
+            isSuperAdmin: 1,
+            isAdmin: 1,
         });
 
         if (!user) return res.send("user not found!");
-
-        // const isEqual = await user.compare(password);
-
-        // if (!isEqual) return res.send("Email or password is not valid!");
         if (user.password !== password)
             return res.send("Email or password is not valid");
-
+        const token = createTokens({
+            full_name: user.full_name,
+            email: user.email,
+            isSuperAdmin: user.isSuperAdmin,
+            isAdmin: user.isAdmin,
+        });
         res.send({
             message: "loggedIn",
-            data: user,
+            data: token,
         });
     } catch (error) {
         next(error);

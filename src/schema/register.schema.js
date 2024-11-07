@@ -6,4 +6,6 @@ export const RegisterSchema = Joi.object({
     password: Joi.string().min(6),
     bio: Joi.string().optional(),
     skills: Joi.string().optional(),
+    isSuperAdmin: Joi.boolean().required(),
+    isAdmin: Joi.boolean().required()
 });

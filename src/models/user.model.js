@@ -31,6 +31,15 @@ const userSchema = new Schema(
         skills: {
             type: String,
         },
+        isSuperAdmin: {
+            type: Boolean,
+            default: false,
+            unique: true,
+        },
+        isAdmin: {
+            type: Boolean,
+            default: false,
+        },
     },
     {
         timestamps: true,
