@@ -16,13 +16,15 @@ const createTokens = (payload) => {
 };
 
 const verifyToken = (type, token) => {
-    const data = jwt.verify(
-        token,
-        type === "access" ? process.env.ACCESS_KEY : process.env.REFRESH_KEY
-    );
-    console.log(data);
-
-    return data;
+    try {
+        const data = jwt.verify(
+            token,
+            type === "access" ? process.env.ACCESS_KEY : process.env.REFRESH_KEY
+        );
+        return { decode: data, error: null };
+    } catch (error) {
+        return { decode: null, error };
+    }
 };
 
 export { createTokens, verifyToken };

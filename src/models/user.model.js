@@ -31,14 +31,11 @@ const userSchema = new Schema(
         skills: {
             type: String,
         },
-        isSuperAdmin: {
-            type: Boolean,
-            default: false,
-            unique: true,
-        },
-        isAdmin: {
-            type: Boolean,
-            default: false,
+        role: {
+            type: String,
+            enum: ["user", "admin", "superadmin"],
+            require: true,
+            default: "user",
         },
     },
     {

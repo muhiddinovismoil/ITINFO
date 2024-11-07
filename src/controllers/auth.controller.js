@@ -31,18 +31,15 @@ export const authLoginCon = async (req, res, next) => {
             full_name: 1,
             email: 1,
             password: 1,
-            isSuperAdmin: 1,
-            isAdmin: 1,
+            role: 1,
         });
-
         if (!user) return res.send("user not found!");
         if (user.password !== password)
             return res.send("Email or password is not valid");
         const token = createTokens({
             full_name: user.full_name,
             email: user.email,
-            isSuperAdmin: user.isSuperAdmin,
-            isAdmin: user.isAdmin,
+            role: user.role,
         });
         res.send({
             message: "loggedIn",

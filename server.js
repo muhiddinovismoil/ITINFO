@@ -9,6 +9,7 @@ import {
 
 const app = express();
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 try {
     connect(db.uri);
     mongoose.connection.on("connected", () => console.log("connected"));
